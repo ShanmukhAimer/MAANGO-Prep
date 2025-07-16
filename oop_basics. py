@@ -1,0 +1,32 @@
+import random
+
+class BankAccount:
+    def __init__(self, owner_name: str, balance: float):
+        self.owner_name = owner_name
+        self.balance = balance
+        self.account = random.randint(10000, 1000000)
+
+    def deposit(self, amount):
+        if amount < 0:
+            print('Entered amount is incorrect, please retry')
+        else:
+            self.balance = self.balance + amount
+
+    def withdraw(self, amount):
+        if (self.balance < amount) or (amount < 0):
+            print('Insufficient balance or entered amount is incorrect, please retry')
+        else:
+            self.balance = self.balance - amount
+
+    def __str__(self):
+        return f'Hi {self.owner_name}, your available balance for the account number: {self.account} is ${self.balance} only'
+
+obj = BankAccount('Shannu', 30)
+obj.deposit(300)
+obj.withdraw(600)
+print(obj)
+
+obj1 = BankAccount('Shannu', 600)
+obj1.deposit(300)
+obj1.withdraw(600)
+print(obj1)
